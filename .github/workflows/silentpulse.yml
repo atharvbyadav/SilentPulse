@@ -12,6 +12,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -20,6 +22,9 @@ jobs:
 
       - name: Install Dependencies
         run: pip install requests
+
+      - name: Debug: Show Current URLs
+        run: cat data/urls.json
 
       - name: Run SilentPulse
         run: python src/pulse.py
