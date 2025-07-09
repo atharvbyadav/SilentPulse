@@ -2,7 +2,7 @@ name: SilentPulse - Keep Projects Alive
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0,30 * * * *"
   workflow_dispatch:
 
 jobs:
