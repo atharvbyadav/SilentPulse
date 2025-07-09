@@ -26,7 +26,7 @@
 
 ## 🚀 How It Works
 
-SilentPulse reads a list of URLs from `data/urls.json`, sends GET requests to each, and logs:
+SilentPulse reads a list of URLs from `data/urls.json`, sends GET requests to each and logs:
 
 - HTTP status code
 - Response time (ms)
@@ -44,6 +44,7 @@ SilentPulse/
 ├── data/urls.json                      # List of URLs to pulse
 ├── logs/pulse-log.csv                  # Auto-generated pulse logs
 ├── src/pulse.py                        # Core pulse script
+├── LICENSE
 ├── requirements.txt                    # Python dependencies
 └── README.md                           # You’re reading it
 
