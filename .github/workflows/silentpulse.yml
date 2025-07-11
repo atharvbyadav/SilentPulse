@@ -2,7 +2,7 @@ name: SilentPulse - Keep Projects Alive
 
 on:
   schedule:
-    - cron: "0,30 * * * *"
+    - cron: "*/15 * * * *"
   workflow_dispatch:
 
 jobs:
@@ -28,3 +28,13 @@ jobs:
 
       - name: Run SilentPulse
         run: python src/pulse.py
+
+      - name: Commit Pulse Log
+        run: |
+          git config --global user.name "silentpulse[bot]"
+          git config --global user.email "github-actions@users.noreply.github.com"
+
+          git add logs/pulse-log.csv
+          timestamp=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          git commit -m "Pulse log update - $timestamp" || echo "No changes to commit"
+          git push origin main
