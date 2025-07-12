@@ -27,6 +27,9 @@ jobs:
         run: cat data/urls.json
 
       - name: Run SilentPulse
+        env:
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_SILENTPULSE }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_SILENTPULSE }}
         run: python src/pulse.py
 
       - name: Commit Pulse Log
