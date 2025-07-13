@@ -26,10 +26,15 @@ jobs:
       - name: Show Current URLs
         run: cat data/urls.json
 
+      - name: Debug Environment
+        run: |
+          echo "TOKEN SET: ${{ secrets.TELEGRAM_TOKEN_SILENTPULSE != '' }}"
+          echo "CHAT ID SET: ${{ secrets.TELEGRAM_CHAT_ID_SILENTPULSE != '' }}"
+
       - name: Run SilentPulse
         env:
-          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN_SILENTPULSE }}
-          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID_SILENTPULSE }}
+          TELEGRAM_TOKEN_SILENTPULSE: ${{ secrets.TELEGRAM_TOKEN_SILENTPULSE }}
+          TELEGRAM_CHAT_ID_SILENTPULSE: ${{ secrets.TELEGRAM_CHAT_ID_SILENTPULSE }}
         run: python src/pulse.py
 
       - name: Commit Pulse Log
